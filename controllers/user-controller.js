@@ -2,11 +2,14 @@ const userModel=require('../models/user.js');
 const moment=require('moment');
 
 
+
 const register=(req,res)=>{
     const user=req.body;
+    const file=req.file;
     userModel.isEmailExists(user.email)
         .then(response1=>{
-            if(response1.length<0){
+            console.log(response1);
+            if(response1.length<=0){
                 userModel.register(user)
                     .then(response=>{
                         userModel.getUser(response.insertId)
