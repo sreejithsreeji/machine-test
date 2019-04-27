@@ -7,7 +7,9 @@ const  bodyParser = require('body-parser');
 const morgon=require('morgan');
 
 app.use(morgon('dev'));
-app.use(bodyParser.json())
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 
 //routes

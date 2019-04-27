@@ -16,7 +16,6 @@ let tokenValidate=(req,res,next)=>{
 };
 const emailValidate=(req,res,next)=>{
     const email=req.body.email;
-
         userModel.isEmailExists(email)
             .then(response=>{
                 if(response.length>0){
@@ -28,8 +27,6 @@ const emailValidate=(req,res,next)=>{
                     next();
                 }
             })
-
-
 };
 
 let validateName=(name)=>{

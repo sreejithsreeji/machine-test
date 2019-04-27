@@ -6,7 +6,7 @@ let register=(user)=>{
         fullname:user.fullname,
         email:user.email,
         password:util.createHash(user.password),
-        profile:null,
+        profile:user.profile,
         token:util.createHash(new Date().getMilliseconds()+user.email),
         token_created_time:moment().format('YYYY-MM-DD hh:mm:ss'),
         created_at:moment().format('YYYY-MM-DD hh:mm:ss')
@@ -68,8 +68,6 @@ let validateToken=(token)=>{
         con.query(sql,[token],(err,rows,fields)=>{
             if(err) reject(err);
             const response=rows[0];
-
-            console.log(response)
             const expiredTime=moment(response.token_created_time).add(2,'hours').format('yyyy-mm-dd hh:mm:ss');
 
             if(moment().format()>expiredTime){
