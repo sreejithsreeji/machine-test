@@ -17,7 +17,6 @@ const upload=util.upload(uploadConfig);
 router.post('/',(req,res)=>{
     upload(req,res,(err)=>{
         if(err){
-           // console.log(err);
             res.status(200).send({
                 status:false,
                 code:err.code,
@@ -37,8 +36,21 @@ router.get('/token/generate',(req,res)=>{
 });
 
 router.patch('/:token',tokenValidater.tokenValidate,(req,res)=>{
+    upload(req,res,(err)=>{
+        if(err){
+            res.status(200).send({
+                status:false,
+                code:err.code,
+                message:(err.code=="LIMIT_FILE_SIZE") ? 'File exceeds maximum limits..Max file size should be below 2MB':'Invalid file format.only allowed .jpeg'
+            })
+        }else{
+            if(req.body){
+                userCtrl.update(req,res);
 
-    userCtrl.update(req,res);
+            }
+        }
+    })
+   
 })
 
 module.exports=router;
