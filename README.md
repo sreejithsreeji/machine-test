@@ -13,5 +13,5 @@ create .env file using the format prescribed in the test-env.json
     npm start
 This will start the server in **localhost:{PORT}**
 #### Sample Request
-    http://localhost:3000/wesa/api/v1/users/9567133536/all
+
 
