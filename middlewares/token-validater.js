@@ -32,8 +32,20 @@ const emailValidate=(req,res,next)=>{
 
 };
 
+let validateName=(name)=>{
+    var regex = /^[a-zA-Z ]{2,30}$/;
+    if (regex.test(name.toString())) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
 
 module.exports={
     tokenValidate,
-    emailValidate
+    emailValidate,
+    validateName
 }
