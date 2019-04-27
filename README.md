@@ -39,3 +39,8 @@ response:{
              "message": "Token generated sucessfully",
              "token": "1376c88b98ab1bcd16dca459509e8bf01799210da4b8f2d42735166d6f4461cf"
          }
+         
+//Here iam not added the validations beacause iam not familaer with JOI library or express validater which is used for input validateion,
+//i need some more time to read JOI doc and implement with this
+//not added image uploading mechanism
+//all other ,modules are working perfectly  Thank You       
