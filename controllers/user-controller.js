@@ -56,6 +56,9 @@ let generateToken=(req,res)=>{
 let update=(req,res)=>{
     const user=req.body;
     const token=req.params.token;
+    const file=req.file;
+    user.profile=file?file.path:null;
+    
     userModel.updateUser(user,token)
         .then(response=>{
             if(response.changedRows>0){
