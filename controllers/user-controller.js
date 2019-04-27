@@ -8,11 +8,12 @@ const register=(req,res)=>{
     const file=req.file;
     userModel.isEmailExists(user.email)
         .then(response1=>{
-            console.log(response1);
+
             if(response1.length<=0){
                 userModel.register(user)
                     .then(response=>{
-                        userModel.getUser(response.insertId)
+
+                        userModel.getUser(response.insertId,'id')
                             .then(user=>{
                                 res.status(201).send({
                                     status:true,
