@@ -1,5 +1,5 @@
 # Machine test server
-Wesa api.
+user api.
 ## Getting Started
     git clone https://github.com/sreejithsreeji/machine-test
 ### Prerequisites
