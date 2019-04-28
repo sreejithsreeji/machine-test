@@ -55,8 +55,8 @@ CREATE TABLE `users` (
   `password` varchar(125) NOT NULL,
   `token` varchar(256) NOT NULL,
   `profile` varchar(20) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `token_created_time` timestamp NULL DEFAULT NULL,
+  `created_at` varchar(100) NOT NULL ,
+  `token_created_time` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
