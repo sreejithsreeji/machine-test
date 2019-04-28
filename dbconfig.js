@@ -11,6 +11,7 @@ const db=
             connectTimeout:30000,
             multipleStatements:true,
             charset:"utf8mb4",
+            
 
         }
     };

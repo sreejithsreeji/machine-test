@@ -8,8 +8,8 @@ let register=(user)=>{
         password:util.createHash(user.password),
         profile:user.profile,
         token:util.createHash(new Date().getMilliseconds()+user.email),
-        token_created_time:moment().format('YYYY-MM-DD hh:mm:ss'),
-        created_at:moment().format('YYYY-MM-DD hh:mm:ss')
+        token_created_time:moment().format(),
+        created_at:moment().format()
     };
     const sql='insert into users set ?';
    // const tokenSql='insert into token_management set ?';
@@ -51,7 +51,7 @@ let saveToken=(email,token)=>{
     const data={
         email:email,
         token:token,
-        token_created_time:moment().format('YYYY-MM-DD hh:mm:ss')
+        token_created_time:moment().format()
     }
     let sql='update users set ? where email=?';
     return new Promise((resolve, reject) => {
@@ -75,6 +75,7 @@ let validateToken=(token)=>{
                 resolve(false);
             }
             else{
+                
                 resolve(true);
             }
         });
