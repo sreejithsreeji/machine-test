@@ -48,4 +48,10 @@ This will start the server in **localhost:{PORT}**
     //Here iam not added the validations beacause iam not familaer with JOI library or express validater which is used for input validateion,
     //i need some more time to read JOI doc and implement with this
     //not added image uploading mechanism
+
+    //UPDATE
+    //Added image upload feature in new branch
+    //Added user input validation using Joi
+    //some bugs are removed
+    //changes push into the new branch
     //all other ,modules are working perfectly  Thank You       
