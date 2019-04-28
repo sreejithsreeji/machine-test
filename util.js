@@ -31,7 +31,16 @@ let upload=(uploadConfig)=>{
      }).single(uploadConfig.field);
      return upload;
 }
+
+let getTokenFromHeader=(req)=>{
+
+  const authHeader=req.headers.authorization;
+  const token=authHeader.split(' ')[1];
+  if(token) return token;
+  else return null;
+}
  module.exports={
      createHash,
-     upload
+     upload,
+     getTokenFromHeader
  }

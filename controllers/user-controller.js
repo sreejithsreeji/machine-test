@@ -7,8 +7,7 @@ const register=(req,res)=>{
     const user=req.body;
     const file=req.file;
     user.profile=file?file.path:null;
-    console.log(file)
-
+    
     userModel.isEmailExists(user.email)
         .then(response1=>{
             if(response1.length<=0){

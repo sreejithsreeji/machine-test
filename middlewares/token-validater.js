@@ -1,6 +1,10 @@
 const userModel=require('../models/user.js');
+const util=require('../util.js');
+
 let tokenValidate=(req,res,next)=>{
     const token=req.params.token;
+   // const token1=util.getTokenFromHeader(req);
+
     userModel.validateToken(token)
         .then(response=>{
             if(response){

@@ -4,6 +4,7 @@ const userCtrl=require('../controllers/user-controller.js');
 const tokenValidater=require('../middlewares/token-validater.js');
 const multer=require('multer');
 const util=require('../util.js');
+const userSchema=require('../middlewares/schema-validater.js');
 
 const uploadConfig={
     engine:multer,
@@ -14,7 +15,7 @@ const uploadConfig={
 }
 const upload=util.upload(uploadConfig);
 
-router.post('/',(req,res)=>{
+let uploadFile=(req,res,next)=>{
     upload(req,res,(err)=>{
         if(err){
             res.status(200).send({
@@ -23,11 +24,20 @@ router.post('/',(req,res)=>{
                 message:(err.code=="LIMIT_FILE_SIZE") ? 'File exceeds maximum limits..Max file size should be below 2MB':'Invalid file format.only allowed .jpeg'
             })
         }else{
-            if(req.body){
-                userCtrl.register(req,res);
-            }
+           next();
         }
     })
+}
+
+
+
+router.post('/',uploadFile,userSchema.userSchemaValidate,(req,res)=>{
+
+    if(req.body){
+    
+        userCtrl.register(req,res);
+    }
+   
 
 });
 
@@ -36,6 +46,7 @@ router.get('/token/generate',(req,res)=>{
 });
 
 router.patch('/:token',tokenValidater.tokenValidate,(req,res)=>{
+    
     upload(req,res,(err)=>{
         if(err){
             res.status(200).send({

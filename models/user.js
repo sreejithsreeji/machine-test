@@ -68,9 +68,9 @@ let validateToken=(token)=>{
         con.query(sql,[token],(err,rows,fields)=>{
             if(err) reject(err);
             const response=rows[0];
-            const expiredTime=moment(response.token_created_time).add(2,'hours').format('yyyy-mm-dd hh:mm:ss');
-
-            if(moment().format()>expiredTime){
+            const expiredTime=moment(response.token_created_time).add(2,'hours');
+            const now=moment().valueOf();
+            if(now>expiredTime){
 
                 resolve(false);
             }
